@@ -4,10 +4,10 @@ export const config = {
   CHAIN_ID: 'secret-4',
   CHAIN_NAME: 'Secret 4',
 
-  SECRET_POST_ADDRESS: 'https://bridge-api-manager.azure-api.net/',
-  SECRET_RPC: 'https://bridge-api-manager.azure-api.net/',
+  SECRET_POST_ADDRESS: 'https://secret-4.api.trivium.network:1317/',
+  SECRET_RPC: 'https://secret-4.api.trivium.network:26657/',
   // SECRET_WS: 'wss://bootstrap.secrettestnet.io:26667/websocket',
-  SECRET_LCD: 'https://bridge-api-manager.azure-api.net/',
+  SECRET_LCD: 'https://secret-4.api.trivium.network:1317/',
 
   BACKEND_URL: 'https://api-bridge-mainnet.azurewebsites.net',
   // PLSM_BACKEND_URL: 'https://bridge-plasm-backend-testnet.azurewebsites.net',
