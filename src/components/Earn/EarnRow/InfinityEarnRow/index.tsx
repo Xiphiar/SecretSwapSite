@@ -156,6 +156,15 @@ class InfinityEarnRow extends Component<
             currency = this.props.token.rewardsSymbol.toLowerCase();
           }
 
+          if (this.props.userStore.isUnconnected) {
+            if(this.props.userStore.isKeplrWallet){
+              this.props.userStore.signIn();
+            }else{
+              console.log("Not keplr extention")
+              notify("error","It seems like you don't have Keplr extention installed in your browser. Install Keplr, reload the page and try again");
+            }
+          }
+
           await this.props.userStore?.keplrWallet?.suggestToken(this.props.userStore?.chainId, this.props.token.rewardsContract);
           this.props.userStore.refreshTokenBalanceByAddress(this.props.token.rewardsContract);
           this.props.userStore.refreshRewardsBalances('', this.props.token.rewardsContract);
@@ -170,7 +179,8 @@ class InfinityEarnRow extends Component<
           this.setState({ vkey: viewingKey })
 
         } catch (error) {
-          console.error('failed');
+          notify("error",`Failed to create key: ${error.toString()}`);
+          console.error('Failed to create or refresh key:', error);
         }
       },
       noun: noun

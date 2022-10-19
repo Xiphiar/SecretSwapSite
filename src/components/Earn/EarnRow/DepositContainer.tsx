@@ -7,6 +7,8 @@ import ScrtTokenBalanceSingleLine from './ScrtTokenBalanceSingleLine';
 import BigNumber from 'bignumber.js';
 import { unlockJsx } from 'pages/Swap/utils';
 import { useStores } from 'stores';
+import { createNotification } from 'pages/Exchange/utils';
+import { notify } from 'blockchain-bridge';
 
 const buttonStyle = {
   borderRadius: '15px',
@@ -68,12 +70,21 @@ const DepositContainer = props => {
             currency = props.currency.toLowerCase();
           }
 
+          if (props.userStore.isUnconnected) {
+            if(props.userStore.isKeplrWallet){
+              props.userStore.signIn();
+            }else{
+              console.log("Not keplr extention")
+              notify("error","It seems like you don't have Keplr extention installed in your browser. Install Keplr, reload the page and try again");
+            }
+          }
           await props.userStore?.keplrWallet?.suggestToken(props.userStore?.chainId, props.tokenAddress);
           props.userStore.refreshTokenBalanceByAddress(props.tokenAddress);
           props.userStore.refreshRewardsBalances('', props.tokenAddress);
           props.userStore.updateScrtBalance();
         } catch (error) {
-          console.error('failed');
+          notify("error",`Failed to create key: ${error.toString()}`);
+          console.error('Failed to create or refresh key:', error);
         }
       },
     });
