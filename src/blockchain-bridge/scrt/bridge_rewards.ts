@@ -43,6 +43,10 @@ export const QueryRewards = async (params: {
 
   const result: IQueryRewards = await cosmJS.queryContractSmart(contract, queryMsg);
 
+  if (!result.rewards) {
+    throw JSON.stringify(result);
+  }
+
   return result.rewards.rewards;
 };
 
