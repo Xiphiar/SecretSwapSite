@@ -53,7 +53,7 @@ const BUTTON_MSG_SELECT_TOKEN = 'Select a token';
 
 const actionButtonMessages = [BUTTON_MSG_SWAP, BUTTON_MSG_WRAP, BUTTON_MSG_UNWRAP];
 
-const DEFAULT_SLIPPAGE = 0.5 / 100;
+const DEFAULT_SLIPPAGE = 0.03;
 
 @observer
 export class SwapTab extends React.Component<
