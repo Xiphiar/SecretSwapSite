@@ -9,7 +9,8 @@ export const config = {
   // SECRET_WS: 'wss://bootstrap.secrettestnet.io:26667/websocket',
   SECRET_LCD: 'https://secret-4.api.trivium.network:1317/',
 
-  BACKEND_URL: 'https://api-bridge-mainnet.azurewebsites.net',
+  // BACKEND_URL: 'https://api-bridge-mainnet.azurewebsites.net',
+  BACKEND_URL: 'https://secretswap-api.trivium.network',
   // PLSM_BACKEND_URL: 'https://bridge-plasm-backend-testnet.azurewebsites.net',
   BSC_BACKEND_URL: 'https://bridge-bsc-mainnet.azurewebsites.net',
 
