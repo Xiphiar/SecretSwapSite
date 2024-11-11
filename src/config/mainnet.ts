@@ -12,7 +12,8 @@ export const config = {
   // BACKEND_URL: 'https://api-bridge-mainnet.azurewebsites.net',
   BACKEND_URL: 'https://secretswap-api.trivium.network',
   // PLSM_BACKEND_URL: 'https://bridge-plasm-backend-testnet.azurewebsites.net',
-  BSC_BACKEND_URL: 'https://bridge-bsc-mainnet.azurewebsites.net',
+  // BSC_BACKEND_URL: 'https://bridge-bsc-mainnet.azurewebsites.net',
+  BSC_BACKEND_URL: 'https://secretswap-api.trivium.network',
 
   SCRT_SWAP_CONTRACT: 'secret1sferux27lpr3lm52c8sq2dd7m54xhm28thnj5y',
   BSC_SCRT_SWAP_CONTRACT: 'secret168mwctng6s7vk9w5d7n0wsty2f7vaq3rjq8g7c',

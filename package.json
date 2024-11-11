@@ -12,8 +12,8 @@
     "make:testnet": "REACT_APP_NETWORK='testnet' GENERATE_SOURCEMAP=false craco build",
     "test": "craco test",
     "//_comment_legacy": "The following maintains compatibility with legacy set ups e.g. yarn dev",
-    "start": "cross-env REACT_APP_NETWORK='mainnet' craco start",
-    "dev": "cross-env REACT_APP_NETWORK='testnet' craco start",
+    "start": "cross-env REACT_APP_NETWORK='mainnet' NODE_OPTIONS=--openssl-legacy-provider craco start",
+    "dev": "cross-env REACT_APP_NETWORK='testnet' NODE_OPTIONS=--openssl-legacy-provider craco start",
     "stg": "cross-env REACT_APP_NETWORK='mainnet' craco start",
     "build": "cross-env REACT_APP_NETWORK='mainnet' GENERATE_SOURCEMAP=false craco build && cp build/index.html build/404.html"
   },
