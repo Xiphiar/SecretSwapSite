@@ -15,7 +15,8 @@
     "start": "cross-env REACT_APP_NETWORK='mainnet' NODE_OPTIONS=--openssl-legacy-provider craco start",
     "dev": "cross-env REACT_APP_NETWORK='testnet' NODE_OPTIONS=--openssl-legacy-provider craco start",
     "stg": "cross-env REACT_APP_NETWORK='mainnet' craco start",
-    "build": "cross-env REACT_APP_NETWORK='mainnet' NODE_OPTIONS=--openssl-legacy-provider craco build && cp build/index.html build/404.html"
+    "build": "cross-env REACT_APP_NETWORK='mainnet' craco build && cp build/index.html build/404.html",
+    "build:local": "cross-env REACT_APP_NETWORK='mainnet' NODE_OPTIONS=--openssl-legacy-provider craco build && cp build/index.html build/404.html"
   },
   "repository": {
     "type": "git",
