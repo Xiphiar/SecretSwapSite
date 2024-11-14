@@ -8,14 +8,14 @@
     "host": "REACT_APP_NETWORK='mainnet' craco start",
     "host:testnet": "REACT_APP_NETWORK='testnet' craco start",
     "host:testnet_local": "REACT_APP_NETWORK='testnet_local' craco start",
-    "make": "REACT_APP_NETWORK='mainnet' GENERATE_SOURCEMAP=false craco build",
-    "make:testnet": "REACT_APP_NETWORK='testnet' GENERATE_SOURCEMAP=false craco build",
+    "make": "REACT_APP_NETWORK='mainnet' craco build",
+    "make:testnet": "REACT_APP_NETWORK='testnet' craco build",
     "test": "craco test",
     "//_comment_legacy": "The following maintains compatibility with legacy set ups e.g. yarn dev",
     "start": "cross-env REACT_APP_NETWORK='mainnet' NODE_OPTIONS=--openssl-legacy-provider craco start",
     "dev": "cross-env REACT_APP_NETWORK='testnet' NODE_OPTIONS=--openssl-legacy-provider craco start",
     "stg": "cross-env REACT_APP_NETWORK='mainnet' craco start",
-    "build": "cross-env REACT_APP_NETWORK='mainnet' GENERATE_SOURCEMAP=false craco build && cp build/index.html build/404.html"
+    "build": "cross-env REACT_APP_NETWORK='mainnet' NODE_OPTIONS=--openssl-legacy-provider craco build && cp build/index.html build/404.html"
   },
   "repository": {
     "type": "git",
