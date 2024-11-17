@@ -123,18 +123,18 @@ export class UserStoreMetamask extends StoreConstructor {
         }),
     );
 
-    if (isNaN(this.rates.BSC) || this.rates.BSC === 0) {
-      const bnbUSDT = await agent.get<{ body: IOperation }>(
-        'https://api.binance.com/api/v1/ticker/24hr?symbol=BNBUSDT',
-      );
-      this.rates.BSC = bnbUSDT.body.lastPrice;
-    }
-    if (isNaN(this.rates.ETH) || this.rates.ETH === 0) {
-      const ethusdt = await agent.get<{ body: IOperation }>(
-        'https://api.binance.com/api/v1/ticker/24hr?symbol=ETHUSDT',
-      );
-      this.rates.ETH = ethusdt.body.lastPrice;
-    }
+    // if (isNaN(this.rates.BSC) || this.rates.BSC === 0) {
+    //   const bnbUSDT = await agent.get<{ body: IOperation }>(
+    //     'https://api.binance.com/api/v1/ticker/24hr?symbol=BNBUSDT',
+    //   );
+    //   this.rates.BSC = bnbUSDT.body.lastPrice;
+    // }
+    // if (isNaN(this.rates.ETH) || this.rates.ETH === 0) {
+    //   const ethusdt = await agent.get<{ body: IOperation }>(
+    //     'https://api.binance.com/api/v1/ticker/24hr?symbol=ETHUSDT',
+    //   );
+    //   this.rates.ETH = ethusdt.body.lastPrice;
+    // }
   }
 
   getNetworkPrice() {
