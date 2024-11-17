@@ -257,8 +257,7 @@ export const getTokensInfo = async (params: any): Promise<{ content: ITokenInfo[
 
     content.push(...sTokens);
 
-    // return { content };
-    return { content: sTokens };
+    return { content };
   } catch (e) {
     console.error(e);
     return { content: undefined };
