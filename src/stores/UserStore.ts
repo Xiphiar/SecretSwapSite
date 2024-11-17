@@ -1128,17 +1128,17 @@ export class UserStoreEx extends StoreConstructor {
       this.stores.tokens.allData.find(token => token.display_props.symbol.toUpperCase() === 'SSCRT')?.price,
     );
 
-    // fallback to binance prices
-    if (isNaN(this.scrtRate) || this.scrtRate === 0) {
-      const scrtbtc = await agent.get<{ body: IOperation }>(
-        'https://api.binance.com/api/v1/ticker/24hr?symbol=SCRTBTC',
-      );
-      const btcusdt = await agent.get<{ body: IOperation }>(
-        'https://api.binance.com/api/v1/ticker/24hr?symbol=BTCUSDT',
-      );
+    // // fallback to binance prices
+    // if (isNaN(this.scrtRate) || this.scrtRate === 0) {
+    //   const scrtbtc = await agent.get<{ body: IOperation }>(
+    //     'https://api.binance.com/api/v1/ticker/24hr?symbol=SCRTBTC',
+    //   );
+    //   const btcusdt = await agent.get<{ body: IOperation }>(
+    //     'https://api.binance.com/api/v1/ticker/24hr?symbol=BTCUSDT',
+    //   );
 
-      this.scrtRate = scrtbtc.body.lastPrice * btcusdt.body.lastPrice;
-    }
+    //   this.scrtRate = scrtbtc.body.lastPrice * btcusdt.body.lastPrice;
+    // }
   }
 
   // this.rates = {
