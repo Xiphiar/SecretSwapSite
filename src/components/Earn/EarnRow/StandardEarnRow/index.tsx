@@ -143,7 +143,9 @@ class StandardEarnRow extends Component<
     const isDeprecated = this.props.token.deprecated && this.props.token.deprecated_by !== '';
     let title = '';
     if (isDeprecated) {
-      title = this.props.token.display_props.label === 'SEFI' ? 'SEFI STAKING (OLD)' : `${tokenName} (OLD)`;
+      title = this.props.token.display_props.label === 'SEFI' ? 'SEFI STAKING (OLD)'
+      : this.props.token.display_props.label === 'ALTER' ? 'ALTER STAKING (OLD)'
+      : `${tokenName} (OLD)`;
     } else if (this.props.token.display_props.label === 'SEFI') {
       title = 'SEFI STAKING (V2)';
     } else if (this.props.token.display_props.label === 'ALTER') {
@@ -249,8 +251,8 @@ class StandardEarnRow extends Component<
           {this.props.token.deprecated ? (
             <div className="maintenance-warning">
               <h3>
-                <Icon name="warning circle" />A new version of this earn pool is live. Withdraw by
-                 clicking the button below and then stake to the new pool to earn rewards!
+                <Icon name="warning circle" />SecretSwap is depreciated. Withdraw any tokens in this pool by
+                 clicking the button below.
               </h3>
             </div>
           ) : (

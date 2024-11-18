@@ -1,0 +1,109 @@
+{
+  "shadeTokenContract": {
+      "contract_hash": "FA824C4504F21FC59250DA0CDF549DD392FD862BAF2689D246A07B9E941F04A9",
+      "src_network": "Secret",
+      "src_coin": "SHADE",
+      "src_address": "secret1qfql357amn448duf5gvp9gr48sxx9tsnhupu3d",
+      "dst_network": "Secret",
+      "dst_address": "secret1qfql357amn448duf5gvp9gr48sxx9tsnhupu3d",
+      "dst_coin": "SHADE",
+      "decimals": "6",
+      "name": "SHADE",
+      "symbol": "SHADE",
+      "display_props": {
+          "symbol": "SHADE",
+          "image": "/static/tokens/shade.svg",
+          "min_to_scrt": "10",
+          "min_from_scrt": "1000",
+          "label": "SHADE",
+          "hidden": false,
+          "usage": [
+              "LPSTAKING",
+              "REWARDS",
+              "SWAP"
+          ]
+      },
+      "totalLocked": "100000000000",
+      "totalLockedNormal": "",
+      "totalLockedUSD": "",
+      "price": "1.0"
+  },
+  "alterTokenContract": {
+      "contract_hash": "d4f32c1bca133f15f69d557bd0722da10f45e31e5475a12900ca1e62e63e8f76",
+      "src_network": "Secret",
+      "src_coin": "ALTER",
+      "src_address": "secret12rcvz0umvk875kd6a803txhtlu7y0pnd73kcej",
+      "dst_network": "Secret",
+      "dst_address": "secret12rcvz0umvk875kd6a803txhtlu7y0pnd73kcej",
+      "dst_coin": "ALTER",
+      "decimals": "6",
+      "name": "ALTER",
+      "symbol": "ALTER",
+      "display_props": {
+          "symbol": "ALTER",
+          "image": "/static/tokens/alter.svg",
+          "min_to_scrt": "10",
+          "min_from_scrt": "1000",
+          "label": "ALTER",
+          "hidden": false,
+          "usage": [
+              "LPSTAKING",
+              "REWARDS",
+              "SWAP"
+          ]
+      },
+      "totalLocked": "100000000000",
+      "totalLockedNormal": "",
+      "totalLockedUSD": "",
+      "price": "0.10274"
+  },
+  "alterStakingContract": {
+      "pool_address": "secret18pqz6x67ty6wnjlrcultfcdc5trz2xy5tjglcx",
+      "contract_hash": "C644EDD309DE7FD865B4FBE22054BCBE85A6C0B8ABF5F110053FE1B2D0E8A72A",
+      "inc_token": {
+          "symbol": "ALTER",
+          "address": "secret12rcvz0umvk875kd6a803txhtlu7y0pnd73kcej",
+          "decimals": 6,
+          "name": "ALTER",
+          "price": "0.10274"
+      },
+      "rewards_token": {
+          "symbol": "ALTER",
+          "address": "secret12rcvz0umvk875kd6a803txhtlu7y0pnd73kcej",
+          "decimals": 6,
+          "name": "ALTER",
+          "price": "0.10274"
+      },
+      "total_locked": "1284035558722",
+      "pending_rewards": "",
+      "deadline": "",
+      "hidden": false,
+      "deprecated": true,
+      "deprecated_by": "EOL",
+      "_id": ""
+  },
+  "infinityPoolContract": {
+      "pool_address": "secret1t32sqak9mr844p0vwhmt4c23nsw8t03vexk4xv",
+      "contract_hash": "60976BE949D9881386554D07C6BC54F8ECA3B7F329AB2E31E9610A9CDE7476FE",
+      "inc_token": {
+          "symbol": "SEFI",
+          "address": "secret15l9cqgz5uezgydrglaak5ahfac69kmx2qpd6xt",
+          "decimals": 6,
+          "name": "Secret Finance Token",
+          "price": "0.00087374"
+      },
+      "rewards_token": {
+          "symbol": "SEFI",
+          "address": "secret15l9cqgz5uezgydrglaak5ahfac69kmx2qpd6xt",
+          "decimals": 6,
+          "name": "Secret Finance Token",
+          "price": "0.0375"
+      },
+      "total_locked": "190551732391728",
+      "hidden": false,
+      "pending_rewards": "0",
+      "deadline": "3193784",
+      "_id": ""
+  },
+  "showAlterAPR": true
+}

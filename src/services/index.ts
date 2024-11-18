@@ -17,6 +17,7 @@ import { SwapStatus } from '../constants';
 import { ProxyTokens } from '../blockchain-bridge/eth/proxyTokens';
 import { networkFromToken, NETWORKS } from '../blockchain-bridge/eth/networks';
 import axios from 'axios';
+import config_mainnet from './config_mainnet.json'
 
 //
 // Map for override images for each token
@@ -259,8 +260,8 @@ export const getTokensInfo = async (params: any): Promise<{ content: ITokenInfo[
 
     return { content };
   } catch (e) {
-    console.error(e);
-    return { content: undefined };
+    console.error('getTokensInfo error:', e);
+    return { content: [] };
   }
 };
 
@@ -370,13 +371,13 @@ export const getScrtProof = async (addr): Promise<{ proof: IClaimProofDocument }
 export const getFetcherConfigs = async () => {
   if(Object.keys(globalThis.config['FETCHER_CONFIGS']).length === 0){
     try{
-      const fetcherConfigs = await axios({
-        method: 'get',
-        url: 'https://data.secretswap.net/apps/ss/config_' + (globalThis.config.NETWORK_TYPE === 'TESTNET' ? 'testnet' : 'mainnet') + '.json',
-      });
+      // const fetcherConfigs = await axios({
+      //   method: 'get',
+      //   url: 'https://data.secretswap.net/apps/ss/config_' + (globalThis.config.NETWORK_TYPE === 'TESTNET' ? 'testnet' : 'mainnet') + '.json',
+      // });
       //console.log(fetcherConfigs.data);
 
-      globalThis.config['FETCHER_CONFIGS'] = fetcherConfigs.data;
+      globalThis.config['FETCHER_CONFIGS'] = config_mainnet; //fetcherConfigs.data;
 
       infinityRewardTokenInfo[1].info.address = globalThis.config.FETCHER_CONFIGS.alterTokenContract?.src_address
       infinityRewardTokenInfo[0].info.numStaked = globalThis.config.FETCHER_CONFIGS.infinityPoolContract?.total_locked

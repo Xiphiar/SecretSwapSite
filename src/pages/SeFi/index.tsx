@@ -197,7 +197,7 @@ export const SeFiPage = observer(() => {
   const [multiFilter, setMultiFilter] = useState<any>("noneFilter");
   const [filteredTokens, setFilteredTokens] = useState<ITokenInfo[]>([]);
   const [showFavoritePools, setShowFavoritePools] = useState<boolean>(getLocalShowPools(KEY_SHOW_FAVORITE_POOLS));
-  const [showOldPools, setShowOldPools] = useState<boolean>(getLocalShowPools(KEY_SHOW_OLD_POOLS));
+  const [showOldPools, setShowOldPools] = useState<boolean>(true);
   const [favPools, setFavPools] = useState<string[]>(localStorage[KEY_FAVORITE_POOLS] ? JSON.parse(localStorage[KEY_FAVORITE_POOLS]) : []);
   // const [rewardTokens, setRewardTokens] = useState<RewardsToken[]>([]);
 
