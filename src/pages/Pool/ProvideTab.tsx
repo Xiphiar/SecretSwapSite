@@ -1,6 +1,6 @@
 import React, { CSSProperties } from 'react';
 import { CosmWasmClient, ExecuteResult } from 'secretjs';
-import { Button, Container } from 'semantic-ui-react';
+import { Button, Container, Icon } from 'semantic-ui-react';
 import { canonicalizeBalance, displayHumanizedBalance, humanizeBalance, sortedStringify, UINT128_MAX } from 'utils';
 import styles from './styles.styl';
 import { SwapAssetRow } from '../SwapAssetRow/SwapAssetRow';
@@ -472,7 +472,14 @@ export class ProvideTab extends React.Component<
     return (
       <Container className={`${styles.swapContainerStyle} ${styles[this.props.theme.currentTheme]}`}>
         <TabsHeader />
-        <SwapAssetRow
+
+        <div className="maintenance-warning">
+          <h3>
+            <Icon name="warning circle" />SecretSwap is depreciated. Withdraw any liquidity by
+            clicking the Withdraw tab above.
+          </h3>
+        </div>
+        {/* <SwapAssetRow
           secretjs={this.props.secretjs}
           maxButton={true}
           halfButton={true}
@@ -655,7 +662,7 @@ export class ProvideTab extends React.Component<
           }}
         >
           {buttonMessage}
-        </Button>
+        </Button> */}
       </Container>
     );
   }
