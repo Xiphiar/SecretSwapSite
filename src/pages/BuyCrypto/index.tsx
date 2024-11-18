@@ -106,7 +106,7 @@ export const BuyCrypto = observer(() => {
             </div>
           </section>
           <section className="buy-convert-grid">
-            <div className="transak-container">
+            {/* <div className="transak-container">
               <h1>Buy</h1>
               <div>
                 <iframe
@@ -118,7 +118,7 @@ export const BuyCrypto = observer(() => {
                   allowFullScreen={false}
                 />
               </div>
-            </div>
+            </div> */}
             <div className="convert-container">
               <h1>Convert</h1>
               <ConvertCoin
