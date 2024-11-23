@@ -469,200 +469,205 @@ export class ProvideTab extends React.Component<
       }
     }
 
+    const isDisabled = true;
     return (
       <Container className={`${styles.swapContainerStyle} ${styles[this.props.theme.currentTheme]}`}>
         <TabsHeader />
-
-        <div className="maintenance-warning">
-          <h3>
-            <Icon name="warning circle" />SecretSwap is depreciated. Withdraw any liquidity by
-            clicking the Withdraw tab above.
-          </h3>
-        </div>
-        {/* <SwapAssetRow
-          secretjs={this.props.secretjs}
-          maxButton={true}
-          halfButton={true}
-          balance={balanceA}
-          tokens={this.props.tokens}
-          token={this.state.tokenA}
-          setToken={async (symbol: string) => {
-            await this.setToken(symbol, TokenSelector.TokenA);
-          }}
-          amount={this.state.inputA}
-          isEstimated={false}
-          setAmount={(value: string) => {
-            this.setAmount(value, TokenSelector.TokenA);
-          }}
-        />
-        <div
-          style={{
-            padding: '1em',
-            display: 'flex',
-            alignItems: 'center',
-          }}
-        >
-          <FlexRowSpace />
-          <span>
-            <SwapPlus />
-          </span>
-          <FlexRowSpace />
-        </div>
-        <SwapAssetRow
-          secretjs={this.props.secretjs}
-          maxButton={true}
-          halfButton={true}
-          balance={balanceB}
-          tokens={this.props.tokens}
-          token={this.state.tokenB}
-          setToken={async (symbol: string) => {
-            await this.setToken(symbol, TokenSelector.TokenB);
-          }}
-          amount={this.state.inputB}
-          isEstimated={false}
-          setAmount={(value: string) => {
-            this.setAmount(value, TokenSelector.TokenB);
-          }}
-        />
-        {!price.isNaN() && (
-          <PriceRow
-            fromToken={this.props.tokens.get(this.state.tokenA)?.symbol}
-            toToken={this.props.tokens.get(this.state.tokenB)?.symbol}
-            price={price}
-          />
-        )}
-        {lpTokenBalance !== undefined && (
+        { isDisabled ?
+          <div className="maintenance-warning">
+            <h3>
+              <Icon name="warning circle" />SecretSwap is depreciated. Withdraw any liquidity by
+              clicking the Withdraw tab above.
+            </h3>
+          </div>
+        :
           <>
-            <div style={rowStyle}>
-              <span>Your total pool tokens</span>
+            <SwapAssetRow
+              secretjs={this.props.secretjs}
+              maxButton={true}
+              halfButton={true}
+              balance={balanceA}
+              tokens={this.props.tokens}
+              token={this.state.tokenA}
+              setToken={async (symbol: string) => {
+                await this.setToken(symbol, TokenSelector.TokenA);
+              }}
+              amount={this.state.inputA}
+              isEstimated={false}
+              setAmount={(value: string) => {
+                this.setAmount(value, TokenSelector.TokenA);
+              }}
+            />
+            <div
+              style={{
+                padding: '1em',
+                display: 'flex',
+                alignItems: 'center',
+              }}
+            >
               <FlexRowSpace />
-              {lpTokenBalanceNum.isNaN()
-                ? lpTokenBalance
-                : displayHumanizedBalance(humanizeBalance(lpTokenBalanceNum, 6))}
+              <span>
+                <SwapPlus />
+              </span>
+              <FlexRowSpace />
             </div>
-            {!lpTokenBalanceNum.isNaN() && (
+            <SwapAssetRow
+              secretjs={this.props.secretjs}
+              maxButton={true}
+              halfButton={true}
+              balance={balanceB}
+              tokens={this.props.tokens}
+              token={this.state.tokenB}
+              setToken={async (symbol: string) => {
+                await this.setToken(symbol, TokenSelector.TokenB);
+              }}
+              amount={this.state.inputB}
+              isEstimated={false}
+              setAmount={(value: string) => {
+                this.setAmount(value, TokenSelector.TokenB);
+              }}
+            />
+            {!price.isNaN() && (
+              <PriceRow
+                fromToken={this.props.tokens.get(this.state.tokenA)?.symbol}
+                toToken={this.props.tokens.get(this.state.tokenB)?.symbol}
+                price={price}
+              />
+            )}
+            {lpTokenBalance !== undefined && (
               <>
                 <div style={rowStyle}>
-                  <span style={{ margin: 'auto' }}>{`Pooled ${this.props.tokens.get(this.state.tokenA)?.symbol}`}</span>
+                  <span>Your total pool tokens</span>
                   <FlexRowSpace />
-                  <span style={{ margin: 'auto' }}>{pooledTokenA}</span>
+                  {lpTokenBalanceNum.isNaN()
+                    ? lpTokenBalance
+                    : displayHumanizedBalance(humanizeBalance(lpTokenBalanceNum, 6))}
                 </div>
-                <div style={rowStyle}>
-                  <span style={{ margin: 'auto' }}>{`Pooled ${this.props.tokens.get(this.state.tokenB)?.symbol}`}</span>
+                {!lpTokenBalanceNum.isNaN() && (
+                  <>
+                    <div style={rowStyle}>
+                      <span style={{ margin: 'auto' }}>{`Pooled ${this.props.tokens.get(this.state.tokenA)?.symbol}`}</span>
+                      <FlexRowSpace />
+                      <span style={{ margin: 'auto' }}>{pooledTokenA}</span>
+                    </div>
+                    <div style={rowStyle}>
+                      <span style={{ margin: 'auto' }}>{`Pooled ${this.props.tokens.get(this.state.tokenB)?.symbol}`}</span>
+                      <FlexRowSpace />
+                      <span style={{ margin: 'auto' }}>{pooledTokenB}</span>
+                    </div>
+                  </>
+                )}
+                <div
+                  style={{
+                    display: 'flex',
+                    paddingTop: '0.5rem',
+                    color: this.props.theme.currentTheme == 'light' ? '#5F5F6B' : '#DEDEDE',
+                  }}
+                >
+                  Your current share of pool
                   <FlexRowSpace />
-                  <span style={{ margin: 'auto' }}>{pooledTokenB}</span>
+                  {(() => {
+                    if (JSON.stringify(lpTokenBalance).includes('View')) {
+                      return lpTokenBalance;
+                    } else if (isNaN(currentShareOfPool.multipliedBy(100).toNumber())) {
+                      return '-';
+                    } else {
+                      return `${shareOfPoolNumberFormat.format(currentShareOfPool.multipliedBy(100).toNumber())}%`;
+                    }
+                  })()}
                 </div>
               </>
             )}
-            <div
-              style={{
-                display: 'flex',
-                paddingTop: '0.5rem',
-                color: this.props.theme.currentTheme == 'light' ? '#5F5F6B' : '#DEDEDE',
+            {!gainedShareOfPool.isNaN() && (
+              <div
+                style={{
+                  display: 'flex',
+                  paddingTop: '0.5rem',
+                  color: this.props.theme.currentTheme == 'light' ? '#5F5F6B' : '#DEDEDE',
+                }}
+              >
+                Expected gain in your share of pool
+                <FlexRowSpace />
+                {`~${shareOfPoolNumberFormat.format(gainedShareOfPool.multipliedBy(100).toNumber())}%`}
+              </div>
+            )}
+            <PairAnalyticsLink pairAddress={this.props.selectedPair?.contract_addr} />
+            <div hidden={!this.showPoolWarning()}>
+              <NewPoolWarning
+                inputA={this.state.inputA}
+                inputB={this.state.inputB}
+                tokenA={this.props.tokens.get(this.state.tokenA)?.symbol}
+                tokenB={this.props.tokens.get(this.state.tokenB)?.symbol}
+              />
+            </div>
+            <div hidden={!showApproveAButton}>
+              <ApproveButton
+                disabled={this.state.loadingApproveA}
+                loading={this.state.loadingApproveA}
+                onClick={() => {
+                  this.approveOnClick(this.props.selectedPair, this.state.tokenA).then(() => {});
+                }}
+                token={this.props.tokens.get(this.state.tokenA)?.symbol}
+              />
+            </div>
+            <div hidden={!showApproveBButton}>
+              <ApproveButton
+                disabled={this.state.loadingApproveB}
+                loading={this.state.loadingApproveB}
+                onClick={() => {
+                  this.approveOnClick(this.props.selectedPair, this.state.tokenB).then(() => {});
+                }}
+                token={this.props.tokens.get(this.state.tokenB)?.symbol}
+              />
+            </div>
+            <Button
+              disabled={
+                this.state.loadingProvide ||
+                (!this.isReadyForNewPool() &&
+                  (!this.isReadyForProvide() ||
+                    this.state.inputA === '' ||
+                    this.state.inputB === '' ||
+                    showApproveAButton ||
+                    showApproveBButton))
+              }
+              loading={this.state.loadingProvide}
+              primary={
+                (this.isReadyForProvide() || this.state.provideState === ProvideState.CREATE_NEW_PAIR) &&
+                !showApproveAButton &&
+                !showApproveBButton
+              }
+              fluid
+              className={`${styles.provide_button} ${styles[this.props.theme.currentTheme]}`}
+              onClick={async () => {
+                if (this.isReadyForProvide()) {
+                  await this.provideLiquidityAction(this.props.selectedPair);
+                } else if (this.isReadyForNewPool()) {
+                  const assetA = Asset.fromSwapToken(this.props.tokens.get(this.state.tokenA));
+                  const assetB = Asset.fromSwapToken(this.props.tokens.get(this.state.tokenB));
+
+                  this.setState({ loadingProvide: true });
+
+                  try {
+                    const result: any = await this.createNewPairAction(assetA, assetB);
+                    window.dispatchEvent(new Event('updatePairsAndTokens'));
+                    await this.props.user.updateScrtBalance();
+                    if (result.code) {
+                      const error = extractError(result);
+                      throw new Error(error);
+                    }
+                    this.props.notify('success', `${assetA.symbol}/${assetB.symbol} pair created successfully`);
+                  } catch (error) {
+                    this.props.notify('error', `Error creating pair ${assetA.symbol}/${assetB.symbol}: ${error.message}`);
+                  }
+
+                  this.setState({ loadingProvide: false });
+                }
               }}
             >
-              Your current share of pool
-              <FlexRowSpace />
-              {(() => {
-                if (JSON.stringify(lpTokenBalance).includes('View')) {
-                  return lpTokenBalance;
-                } else if (isNaN(currentShareOfPool.multipliedBy(100).toNumber())) {
-                  return '-';
-                } else {
-                  return `${shareOfPoolNumberFormat.format(currentShareOfPool.multipliedBy(100).toNumber())}%`;
-                }
-              })()}
-            </div>
+              {buttonMessage}
+            </Button>
           </>
-        )}
-        {!gainedShareOfPool.isNaN() && (
-          <div
-            style={{
-              display: 'flex',
-              paddingTop: '0.5rem',
-              color: this.props.theme.currentTheme == 'light' ? '#5F5F6B' : '#DEDEDE',
-            }}
-          >
-            Expected gain in your share of pool
-            <FlexRowSpace />
-            {`~${shareOfPoolNumberFormat.format(gainedShareOfPool.multipliedBy(100).toNumber())}%`}
-          </div>
-        )}
-        <PairAnalyticsLink pairAddress={this.props.selectedPair?.contract_addr} />
-        <div hidden={!this.showPoolWarning()}>
-          <NewPoolWarning
-            inputA={this.state.inputA}
-            inputB={this.state.inputB}
-            tokenA={this.props.tokens.get(this.state.tokenA)?.symbol}
-            tokenB={this.props.tokens.get(this.state.tokenB)?.symbol}
-          />
-        </div>
-        <div hidden={!showApproveAButton}>
-          <ApproveButton
-            disabled={this.state.loadingApproveA}
-            loading={this.state.loadingApproveA}
-            onClick={() => {
-              this.approveOnClick(this.props.selectedPair, this.state.tokenA).then(() => {});
-            }}
-            token={this.props.tokens.get(this.state.tokenA)?.symbol}
-          />
-        </div>
-        <div hidden={!showApproveBButton}>
-          <ApproveButton
-            disabled={this.state.loadingApproveB}
-            loading={this.state.loadingApproveB}
-            onClick={() => {
-              this.approveOnClick(this.props.selectedPair, this.state.tokenB).then(() => {});
-            }}
-            token={this.props.tokens.get(this.state.tokenB)?.symbol}
-          />
-        </div>
-        <Button
-          disabled={
-            this.state.loadingProvide ||
-            (!this.isReadyForNewPool() &&
-              (!this.isReadyForProvide() ||
-                this.state.inputA === '' ||
-                this.state.inputB === '' ||
-                showApproveAButton ||
-                showApproveBButton))
-          }
-          loading={this.state.loadingProvide}
-          primary={
-            (this.isReadyForProvide() || this.state.provideState === ProvideState.CREATE_NEW_PAIR) &&
-            !showApproveAButton &&
-            !showApproveBButton
-          }
-          fluid
-          className={`${styles.provide_button} ${styles[this.props.theme.currentTheme]}`}
-          onClick={async () => {
-            if (this.isReadyForProvide()) {
-              await this.provideLiquidityAction(this.props.selectedPair);
-            } else if (this.isReadyForNewPool()) {
-              const assetA = Asset.fromSwapToken(this.props.tokens.get(this.state.tokenA));
-              const assetB = Asset.fromSwapToken(this.props.tokens.get(this.state.tokenB));
-
-              this.setState({ loadingProvide: true });
-
-              try {
-                const result: any = await this.createNewPairAction(assetA, assetB);
-                window.dispatchEvent(new Event('updatePairsAndTokens'));
-                await this.props.user.updateScrtBalance();
-                if (result.code) {
-                  const error = extractError(result);
-                  throw new Error(error);
-                }
-                this.props.notify('success', `${assetA.symbol}/${assetB.symbol} pair created successfully`);
-              } catch (error) {
-                this.props.notify('error', `Error creating pair ${assetA.symbol}/${assetB.symbol}: ${error.message}`);
-              }
-
-              this.setState({ loadingProvide: false });
-            }
-          }}
-        >
-          {buttonMessage}
-        </Button> */}
+        }
       </Container>
     );
   }

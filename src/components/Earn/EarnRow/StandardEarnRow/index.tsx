@@ -140,7 +140,7 @@ class StandardEarnRow extends Component<
 
     let tokenName = unCapitalize(_symbols[1]) + ' - ' + unCapitalize(_symbols[2]);
 
-    const isDeprecated = this.props.token.deprecated && this.props.token.deprecated_by !== '';
+    let isDeprecated = this.props.token.deprecated && this.props.token.deprecated_by !== '';
     let title = '';
     if (isDeprecated) {
       title = this.props.token.display_props.label === 'SEFI' ? 'SEFI STAKING (OLD)'
@@ -153,6 +153,8 @@ class StandardEarnRow extends Component<
     } else {
       title = tokenName;
     }
+
+    isDeprecated = true;
 
     return (
       <div className={`${styles.standard_row}`}>
