@@ -250,7 +250,7 @@ class StandardEarnRow extends Component<
           className={`${styles.content} ${styles[this.props.theme.currentTheme]}`}
           active={activeIndex === 0}
         >
-          {this.props.token.deprecated ? (
+          {isDeprecated ? (
             <div className="maintenance-warning">
               <h3>
                 <Icon name="warning circle" />SecretSwap is depreciated. Withdraw any tokens in this pool by
