@@ -126,6 +126,11 @@ export const emergencyRedeem = async (params: {
 }): Promise<ExecuteResult> => {
   const { secretjs, address, fee } = params;
 
+  alert(`
+Contract Address: ${address}\n
+Message: {"emergency_redeem": {}}
+`);
+
   let result = await secretjs.asyncExecute(
     address,
     {
